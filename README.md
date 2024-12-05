@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# Tip Calculator Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This Tip Calculator web application helps users calculate the total bill amount, including tips, based on their satisfaction level and their friend's satisfaction level with the service. It provides an intuitive interface to input the bill amount, select service ratings, and calculate tips accordingly.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Bill Input:** Enter the total bill amount.
+- **Service Ratings:** Select satisfaction levels for yourself and your friend, which determine the tip percentage.
+- **Tip Calculation:** Automatically calculates the tip based on the average satisfaction levels and displays the total amount to be paid.
+- **Reset Button:** Clears all inputs and resets the form.
+- **User-Friendly Design:** Clean and responsive design with modern CSS styling.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend:** React.js
+- **Styling:** CSS
 
-### `npm test`
+## File Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+project-directory/
+|-- src/
+    |-- App.js          # Main React component
+    |-- index.js        # Entry point
+    |-- styles.css      # Custom CSS for styling
+```
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navigate to the project directory:
+   ```bash
+   cd project-directory
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. Open the application in your browser at:
+   ```
+   http://localhost:3000
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Enter the total bill amount in the input field.
+2. Select satisfaction levels from the dropdown menus for yourself and your friend.
+3. The application will calculate and display the total amount (bill + tip).
+4. Use the reset button to clear inputs and start over.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Screenshot
 
-## Learn More
+![Tip Calculator Screenshot](./screenshot.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## CSS Styling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The application uses modern CSS for a clean and responsive design. Highlights include:
+- **Background:** A subtle light gray for the app's background.
+- **Card Design:** The form is styled as a centered card with rounded corners and a shadow.
+- **Interactive Elements:** Buttons and inputs feature hover effects and smooth transitions.
 
-### Code Splitting
+## Example Code
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### App Component (React):
+```jsx
+export default function App() {
+  const [billamt, setBillamt] = useState("");
+  const [yourReply, setYourReply] = useState(0);
+  const [friendReply, setFriendReply] = useState(0);
 
-### Analyzing the Bundle Size
+  function handleBtnClick() {
+    setBillamt("");
+    setYourReply(0);
+    setFriendReply(0);
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  return (
+    <div className="App">
+      <Bill billamt={billamt} onhandleBillamt={setBillamt} />
+      <Reply reply={yourReply} setReply={setYourReply}>
+        How did you like the Service
+      </Reply>
+      <Reply reply={friendReply} setReply={setFriendReply}>
+        How did your friend like the service
+      </Reply>
+      <DisplayTotal
+        billamt={billamt}
+        yourReply={yourReply}
+        friendReply={friendReply}
+      />
+      <ResetButton onhandleBtn={handleBtnClick} />
+    </div>
+  );
+}
+```
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This project is licensed under the MIT License. You are free to use, modify, and distribute this software as per the license terms.
 
-### Advanced Configuration
+---
+Feel free to customize the app to add more features or improve the user experience!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
