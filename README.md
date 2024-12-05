@@ -63,7 +63,8 @@ project-directory/
 
 ## Screenshot
 
-![Tip Calculator Screenshot](./screenshot.png)
+![Tip Calculator Screenshot](./img/Final_Version.png)
+![Tip Calculator Screenshot](./img/Initial_Version.png)
 
 ## CSS Styling
 
